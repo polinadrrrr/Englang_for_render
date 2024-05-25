@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Редактировать профиль
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid padding">
+    <div class="row text-center">
+        <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+            <form method="post" action="{% url 'profile_edit' %}" enctype="multipart/form-data">
+                <h2>Редактировать профиль</h2>
+                {% csrf_token %}
+                <input type="text" name="first_name" value="{{ user.first_name }}" placeholder="Имя">
+                <input type="text" name="last_name" value="{{ user.last_name }}" placeholder="Фамилия">
+                <input type="text" name="username" value="{{ user.username }}" placeholder="Логин">
+                <input type="text" name="email" value="{{ user.email }}" placeholder="Email">
+                <input type="text" name="about_me" value="{{ profile.about_me }}" placeholder="О себе">
+                <input type="file" name="image" value="{{ profile.image }}" placeholder="Фото" accept="image/*"><br>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

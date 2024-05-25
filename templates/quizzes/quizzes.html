@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Тесты
+{% endblock title %}
+
+{% block content %}
+{% if profile %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+{% else %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">Тесты</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+{% endif %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 offset-md-2 col-md-8 offset-xl-3 col-xl-6">
+            <h1 class="display-4">
+                Тесты
+                {% if user.is_staff %}
+                    <a href="{% url 'create_quiz' %}"><i class="fas fa-plus"></i></a>
+                {% endif %}
+            </h1>
+            <div class="list">
+                <ul class="unordered_list">
+                    {% for quiz in content %}
+                        <li>
+                            <div class="main">
+                                {% if user.is_staff %}
+                                    <a href="{% url 'quiz_details' quiz.id %}">{{ quiz.name }}</a>
+                                {% else %}
+                                    {% if quiz.question_count > 0 %}
+                                        <a href="{% url 'display_quiz' quiz.id %}">{{ quiz.name }}</a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="description">
+                                <p>Дата публикации: {{ quiz.created_at|date }}</p>
+                            </div>
+                            <div class="actions">
+                                {% if user_has_result %}
+                                    <a class="btn" href="{% url 'quiz_results' quiz.id %}"><i class="fas fa-trophy"></i></a>
+                                {% endif %}
+                                {% if user.is_staff %}
+                                    {% if quiz.question_count > 0 %}
+                                        <a class="btn btn-warning" href="{% url 'display_quiz' quiz.id %}"><i class="fas fa-eye"></i></a>
+                                    {% endif %}
+                                    <a class="btn btn-primary" href="{% url 'update_quiz' quiz.id %}"><i class="fas fa-pen"></i></a>
+                                    <a class="btn btn-danger" href="{% url 'delete_quiz' quiz.id %}"><i class="fas fa-trash"></i></a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

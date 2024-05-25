@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ quiz.name }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ quiz.name }}</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead">{{ quiz.published }}</p>
+                <a href="{% url 'display_quiz' quiz.id %}" class="btn btn-warning">Пройти</a>
+            </div>
+        </div>
+    </div>
+    {% if user.is_staff %}
+    <div class="container">
+        <div class="row padding">
+            <div class="col-12 text-center col-sm-4 text-md-end"><a href="{% url 'create_question' quiz.id %}" class="btn btn-success"><i class="fas fa-plus"></i></a></div>
+            <div class="col-12 text-center col-sm-4 text-md-center"><a class="btn btn-primary" href="{% url 'update_quiz' quiz.id %}"><i class="fas fa-pen"></i></a></div>
+            <div class="col-12 text-center col-sm-4 text-md-start"><a class="btn btn-danger" href="{% url 'delete_quiz' quiz.id %}"><i class="fas fa-trash"></i></a></div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container-fluid padding">
+        <div class="row">
+            <div class="offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <div class="list">
+                    <ol class="ordered_list">
+                        {% for question in questions %}
+                            <li class="ordered_list_item">
+                                <div class="question">
+                                    <p>
+                                        {{ question.name }} ({{ question.type }})
+                                        <a href="{% url 'update_question' quiz.id question.id %}"><i class="fas fa-pen"></i></a>
+                                        <a href="{% url 'delete_question' quiz.id question.id %}"><i class="fas fa-trash"></i></a>
+                                    </p>
+                                </div>
+                                <div class="answers">
+                                    {% for answer in question.answer_set.all %}
+                                        {% if answer.is_correct %}
+                                            <p class="correct">{{ answer.name }} <a href="{% url 'delete_answer' quiz.id answer.id %}"><i class="fas fa-trash"></i></a></p>
+                                        {% else %}
+                                            <p class="incorrect">{{ answer.name }} <a href="{% url 'delete_answer' quiz.id answer.id %}"><i class="fas fa-trash"></i></a></p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <form class="text-center" action="{% url 'create_answer' quiz.id question.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" required placeholder="Вариант ответа" name="name"><br>
+                                    <input type="checkbox" name="is_correct" value="True">is correct<br>
+                                    <button class="btn btn-success" type="submit">Сохранить</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Учебник
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <h2>Учебник</h2>
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="{{ form.name.label }}" value="{{ textbook.name }}">
+                    <select name="theme" class="form-select" required="">
+                        {% for value, name in form.theme.field.choices %}
+                            {% if value == textbook.theme.id %}
+                                <option selected value="{{ value }}">
+                                    {{ name }}
+                                </option>
+                            {% else %}
+                                <option value="{{ value }}">
+                                    {{ name }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input type="text" name="author" placeholder="{{ form.author.label }}" value="{{ textbook.author }}">
+                    <input type="text" name="description" placeholder="{{ form.description.label }}" value="{{ textbook.description }}">
+                    <input type="text" placeholder="Теги" name="newtags"/>
+                    <label for="newtags"></label><br>
+                    <label for="file">{{ form.file.label }}</label>
+                    <input type="file" name="file" placeholder="{{ form.file.label }}" accept="application/pdf, application/x-pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"><br>
+                    <label for="image">{{ form.image.label }}</label>
+                    <input type="file" name="image" placeholder="{{ form.image.label }}" accept="image/*"><br>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
