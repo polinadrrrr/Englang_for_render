@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 pip install -r requirements.txt
-# python main/manage.py collectstatic --no-input
-python main/manage.py migrate
+# python (?) Englang_for_render/main/manage.py collectstatic --no-input
+python Englang_for_render/main/manage.py migrate
