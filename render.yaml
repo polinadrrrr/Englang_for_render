@@ -1,0 +1,13 @@
+services: 
+- type: web
+  name: main
+  env: python
+  buildCommand: "./build.sh"        # ensure it's a string
+  startCommand: cd main && gunicorn main.wsgi:application
+  repo: https://github.com/polinadrrrr/Englang_for_render # optional
+  # plan: standard # optional
+  healthCheckPath: /
+  # autoDeploy: false             # optional
+  envVars:
+  - key: DJANGO_SECRET_KEY
+    generateValue: true       # will generate a base64-encoded 256-bit secret
