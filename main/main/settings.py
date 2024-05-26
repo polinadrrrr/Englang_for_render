@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-jwto)m^b+7qff
 #SECRET_KEY = 'django-insecure-jwto)m^b+7qffy(j&=q@tvgg5evxadc9793jj7tkx1xude&0)!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
