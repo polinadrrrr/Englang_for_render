@@ -1,0 +1,10 @@
+asgiref==3.8.1
+Django==5.0.6
+django-tinymce==4.0.0
+gunicorn==22.0.0
+packaging==24.0
+pillow==10.2.0
+pylite==0.1.0
+pytils==0.4.1
+sqlparse==0.5.0
+tzdata==2024.1
