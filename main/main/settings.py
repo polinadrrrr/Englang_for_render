@@ -27,7 +27,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-jwto)m^b+7qff
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'englang-for-render.onrender.com',
+]
 
 SECURE_HSTS_SECONDS = 100000
 SECURE_SSL_REDIRECT = True
