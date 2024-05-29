@@ -124,7 +124,7 @@ a {
     border-top: 2px solid;
     border-bottom: 2px solid;
     border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff) 30;
-    background: url('/static/img/banner.png') no-repeat center center fixed;
+    background: url('/static/img/banner.webp') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
