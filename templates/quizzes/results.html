@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Результаты
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ quiz }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row text-center padding">
+            <div class="col-6">
+                <table>
+                    <tr>
+                        <th colspan="2">Результаты</th>
+                    </tr>
+                    <tr>
+                        <td scope="col">Показатели</td>
+                        <td scope="col">Результаты</td>
+                    </tr>
+                    <tr>
+                        <td>Всего вопросов в тесте</td>
+                        <td>{{ number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Правильные ответы</td>
+                        <td>{{ correct_answers }}</td>
+                    </tr>
+                    <tr>
+                        <td>Неправильные ответы</td>
+                        <td>{{ wrong_answers }}</td>
+                    </tr>
+                    <tr>
+                        <td>Пропущено вопросов</td>
+                        <td>{{ skipped }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button type="button" id="gifs_btn" class="btn btn-primary text-center" data-bs-toggle="collapse" data-bs-target="#gifs" id="btn-back-to-top">Ответы</button>
+    </div>    
+    <div class="collapse" id="gifs">
+        <div class="container-fluid padding">
+            <div class="row">
+                <div class="offset-sm-1 col-sm-10">
+                    <ol class="ordered_list">
+                        {% for choice in choices %}
+                            <li class="ordered_list_item">
+                                {% if choice.answer.is_correct %}
+                                <p>{{ choice.question.name }} - <span class="correct">{{ choice.answer.name }}</span></p>
+                                {% else %}
+                                <p>{{ choice.question.name }} - <span class="incorrect">{{ choice.answer.name }}</span></p>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center padding">
+            <div class="col-12">
+                <a class="btn" href="{% url 'retry_quiz' quiz.id %}"><i class="fas fa-redo"></i></a>
+                <a class="btn" href="{% url 'quizzes' %}">К тестам</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+            labels: ['Правильные ответы', 'Неправильные ответы', 'Пропущено вопросов'],
+            datasets: [{
+                label: 'Ваши ответы',
+                data: [{{ correct_answers }}, {{ wrong_answers }}, {{ skipped }}],
+                backgroundColor: [
+                '#b6ffb6',
+                '#ffb6ff',
+                '#b6b6ff'
+                ],
+                borderColor: [
+                '#00ff00',
+                '#ff00ff',
+                '#0000ff'
+                ],
+                borderWidth: 2,
+                weight: 2
+            }]
+            },
+        });
+    </script>
+{% endblock %}

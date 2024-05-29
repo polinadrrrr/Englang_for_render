@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ quiz.name }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ quiz.name }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form class="text-start" id="question-form" action="{% url 'check_answer' quiz.id question.id %}" method="post">
+                    {% csrf_token %}
+                    <h2>{{ question.name }}</h2>
+                    {% if question.type == 'single' %}
+                        <div>Только один ответ здесь - правильный.</div><br>
+                        {% for answer in question.answer_set.all %}
+                            <input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
+                            <label for="answer{{ forloop.counter }}">{{ answer.name }}</label><br>
+                        {% endfor %}
+                    {% else %}
+                        <div>Здесь несколько правильных ответов.</div><br>
+                        {% for answer in question.answer_set.all %}
+                            <input type="checkbox" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}"/>
+                            <label for="answer{{ forloop.counter }}">{{ answer.name }}</label><br>
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    <button type="submit" class="btn btn-success">Ответить</button>
+                </form>
+            </div>
+            <div class="col-12">
+                {% if next_question %}
+                    <a class="btn" href="{% url 'display_question' quiz.id next_question.id %}"><i class="fas fa-arrow-right"></i></a>
+                {% else %}
+                    Это последний вопрос теста. После ответа нажмите кнопку
+                    <a class="btn" href="{% url 'quiz_results' quiz.id %}">Завершить</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <div id="question-feedback"></div>
+            </div>
+            
+            <div class="col-12">
+                <a class="btn" href="{% url 'quizzes' %}">К тестам</a>
+            </div>
+        </div>
+    </div>    
+    <script>
+        const form = document.getElementById("question-form");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            fetch(form.action, {method:'post', body: new FormData(form)})
+            .then((response) => response.text())
+            .then(text => {
+                document.getElementById("question-feedback").innerHTML = text;
+            });
+        });
+    </script>
+{% endblock %}

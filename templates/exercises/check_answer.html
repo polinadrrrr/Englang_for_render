@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Переведи слово
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form action="{% url 'check_answer' %}" method="post">
+                    {% csrf_token %}
+                    <p class="display-4">{{ word.word_eng }}</p>
+                    <input type="hidden" name="word_id" value="{{ word.id }}">
+                    <input type="text" id="user_answer" name="user_answer"><br>
+                    <button class="btn btn-success" type="submit">Проверить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
