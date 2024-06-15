@@ -183,6 +183,7 @@ def theme_content(request, theme_slug, content_type):
         'theme': theme,
         'content_type': content_type,
         'content': content,
+        'model': model
     }
     if content_type == 'lesson' or content_type == 'textbook':
         return render(request, f'theory/list_{content_type}.html', context)
