@@ -130,6 +130,7 @@ def quiz_results(request, quiz_id):
         return redirect("quizzes")
     context = {
         'quiz': quiz,
+        'questions': questions,
         'user': user,
         'choices': choices,
         'questions': questions,
