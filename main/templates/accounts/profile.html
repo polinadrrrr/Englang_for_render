@@ -96,21 +96,13 @@
     </div>
 </div>
 {% endif %}
-<!-- <div class="container-fluid padding">
-    <div class="row">
-        <div class="col-6 text-center">
-            <h2>Мои успехи</h2>
-        </div>
-        <div class="col-6 text-center">
-            <canvas id="myChart"></canvas>
-        </div>
-    </div>
-</div> -->
 <div class="container padding">
     <div class="row text-center">
-        <div class="col-12">
-            <h2>Мои подписки</h2>
-        </div>
+        {% if followers %}
+            <div class="col-12">
+                <h2>Мои подписки</h2>
+            </div>
+        {% endif %}
         {% for follower in followers %}
         <div class="col-12 col-sm-6 col-md-4">
             <div class="card">
@@ -144,31 +136,4 @@
         </div>
     </div>
 </div>
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-            labels: ['Правильные ответы', 'Неправильные ответы'],
-            datasets: [{
-                label: 'Ваши ответы',
-                data: [{{ total_correct_answers }}, {{ total_wrong_answers }}],
-                backgroundColor: [
-                '#b6ffb6',
-                '#ffb6ff',
-                '#b6b6ff'
-                ],
-                borderColor: [
-                '#00ff00',
-                '#ff00ff',
-                '#0000ff'
-                ],
-                borderWidth: 2,
-                weight: 2
-            }]
-            },
-        });
-    </script> -->
 {% endblock content %}

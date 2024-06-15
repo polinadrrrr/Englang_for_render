@@ -2,10 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Lessons
+    Материалы
 {% endblock title %}
 
 {% block content %}
+    {% if not lessons and not textbooks and not texts and not topics and not exercises %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 offset-md-2 col-md-8 offset-xl-3 col-xl-6">
+                    <h1 class="display-4">Увы, ничего не найдено</h1>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     {% if lessons %}
         <div class="container-fluid">
             <div class="row">

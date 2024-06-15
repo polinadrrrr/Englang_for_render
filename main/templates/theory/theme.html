@@ -33,7 +33,17 @@
                             <li>
                                 <div class="main">
                                     <a href="{% url 'theme_content' theme.slug content_type %}">
-                                    {{ content_type|title}}s
+                                        {% if content_type == 'lesson' %}
+                                            Уроки
+                                        {% elif content_type == 'textbook' %}
+                                            Учебники
+                                        {% elif content_type == 'text' %}
+                                            Тексты
+                                        {% elif content_type == 'topic' %}
+                                            Топики
+                                        {% elif content_type == 'exercise' %}
+                                            Упражнения
+                                        {% endif %}
                                     </a>
                                 </div>
                             </li>

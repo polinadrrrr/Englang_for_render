@@ -26,21 +26,22 @@
             {% endif %}
         </div>
         {% if profile.user.is_staff %}
-        <div class="padding"></div>
-        <div class="col-sm-4 text-sm-center">
-            <a class="btn" href="{% url 'user_lessons' user.username %}">Уроки</a>
-        </div>
-        <div class="col-sm-4 text-sm-center">
-            <a class="btn" href="{% url 'user_texts' user.username %}">Тексты</a>
-        </div>
-        <div class="col-sm-4 text-sm-center">
-            <a class="btn" href="{% url 'user_topics' user.username %}">Топики</a>
-        </div>
-        <div class="col-sm-6 text-sm-center">
-            <a class="btn" href="{% url 'user_exercises' user.username %}">Упражнения</a>
-        </div>
-        <div class="col-sm-6 text-sm-center">
-            <a class="btn" href="{% url 'user_quizzes' user.username %}">Тесты</a>
+        <div class="padding text-center">
+            <div class="col-sm-4">
+                <a class="btn" href="{% url 'user_lessons' user.username %}">Уроки</a>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn" href="{% url 'user_texts' user.username %}">Тексты</a>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn" href="{% url 'user_topics' user.username %}">Топики</a>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn" href="{% url 'user_exercises' user.username %}">Упражнения</a>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn" href="{% url 'user_quizzes' user.username %}">Тесты</a>
+            </div>
         </div>
         {% endif %}
         <div class="offset-1 col-10">
