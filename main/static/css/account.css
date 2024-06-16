@@ -19,6 +19,10 @@ h2.display-4 a, h1.display-4 a {
     font-size: 0.5em !important;
 }
 
+.user_info {
+    overflow-wrap: break-word;
+}
+
 /*  Goal    */
 .goals {
     margin: 15px auto;
