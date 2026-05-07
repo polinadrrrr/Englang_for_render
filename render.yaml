@@ -1,6 +1,6 @@
 services: 
 - type: web
-  name: englang
+  name: main
   env: python
   buildCommand: "./build.sh"        # ensure it's a string
   startCommand: cd main && gunicorn main.wsgi:application
