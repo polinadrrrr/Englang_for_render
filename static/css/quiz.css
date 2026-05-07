@@ -1,0 +1,42 @@
+.error-message, .correct, .did_not_answer, .incorrect {
+    padding: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: 300;
+    color: #222;
+}
+.error-message { background-color: #ffffb6; }
+.correct { background-color: #b6ffb6; }
+.did_not_answer { background-color: #b6b6ff; }
+.incorrect { background-color: #ffb6ff; }
+
+.question a {
+    margin-left: 15px;
+    font-weight: 300;
+    font-size: 1.2em;
+    color: #222;
+    transition: all 0.5s ease;
+}
+
+.question a:hover {
+    color: #666;
+    transition: all 0.5s ease;
+}
+
+.answers a {
+    margin-left: 15px;
+    font-weight: 300;
+    color: #222;
+    transition: all 0.5s ease;
+}
+
+.answers a:hover {
+    color: #666;
+    transition: all 0.5s ease;
+}
+
+.rounded-circle {
+    width: 100px;
+    height: 100px
+}

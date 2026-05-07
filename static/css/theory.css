@@ -1,0 +1,79 @@
+.tag a {
+    color: #222;
+    background: #ddd;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    height: 40px;
+    width: 70%;
+    padding: 6px 12px;
+    border: 0px;
+    margin: 15px auto;
+    transition: 0.5s;
+}
+
+.tag a:hover {
+    background: #222;
+    color: #ddd;
+    transition: 0.5s;
+}
+
+/*  Comments    */
+.comment { 
+    background-color: #ddd;
+    border-bottom: 5px solid;
+    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+}
+.reply { 
+    background-color: #bbb;
+    border-top: 5px solid;
+    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+}
+.comment, .reply {
+    margin-top: 20px;
+    font-weight: 300;
+    padding: 30px 25px;
+    box-shadow: 0px 1px 50px 0px rgba(0, 0, 0, 0.2);
+}
+.comment a, .reply a {
+    color: #222;
+    transition: all 0.5s ease;
+    line-height: 40px;
+}
+.comment a:hover, .reply a:hover {
+    color: #666;
+    transition: all 0.5s ease;
+}
+.author {
+    font-weight: 500;
+}
+.comment img, .reply img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 15px;
+}
+
+/*  Textbook    */
+.textbook {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.textbook img {
+    max-height: 470px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.textbook h2 {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}

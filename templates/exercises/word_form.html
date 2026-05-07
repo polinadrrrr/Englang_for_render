@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Слово
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form method="post" action="">
+                    <h2>Слово</h2>
+                    {% csrf_token %}
+                    <input type="text" name="word_eng" value="{{ word.word_eng }}" placeholder="Слово на английском">
+                    <input type="text" name="word_rus" value="{{ word.word_rus }}" placeholder="Слово на русском">
+                    <input type="text" name="transcript" value="{{ word.transcript }}" placeholder="Транскрипция"><br>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

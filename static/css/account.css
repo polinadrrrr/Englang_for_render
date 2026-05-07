@@ -1,0 +1,90 @@
+/*  Profile    */
+.profile { 
+    max-width: 1100px;
+    margin: 15px auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 400;
+    background-color: #ddd;
+    box-shadow: 0px 1px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+.profile img {
+    border-left: 5px solid;
+    border-top: 5px solid;
+    border-image: linear-gradient(#ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+}
+h2.display-4 a, h1.display-4 a {
+    font-size: 0.5em !important;
+}
+
+/*  Goal    */
+.goals {
+    margin: 15px auto;
+    font-weight: 300;
+    background-color: #ccc;
+    padding: 10px;
+}
+
+.goals a {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: #222;
+    transition: all 0.5s ease;
+}
+
+.goals a:hover {
+    color: #666;
+    transition: all 0.5s ease;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+}
+
+/*  Bookmarks  */
+.bookmarks {
+    max-width: 720px;
+    margin: 15px auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 400;
+    background-color: #ccc;
+}
+.bookmarks p {
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+.bookmarks a {
+    font-size: 2em;
+}
+
+.bookmarks h2, .bookmarks h3 {
+    margin: auto;
+    color: #222;
+}
+.bookmarks:hover h3 {
+    color: #666;
+    transition: all 0.5s ease;
+}
+
+/*  My work */
+.for_moder {
+    max-width: 720px;
+    margin: 15px auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 400;
+    background-color: #ddd;
+    border-top: 5px solid;
+    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+    border-image-slice: 1;
+}
+
+.for_moder div {
+    margin-bottom: 15px;
+}

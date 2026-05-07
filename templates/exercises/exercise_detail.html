@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ exercise.name }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ exercise.name }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <iframe src="{{ exercise.link }}" style="border:0px;width:100%;height:650px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+            </div>
+            {% if user.is_authenticated and exercise.author == user.profile or user.is_superuser %}
+                <div class="col-12 text-center col-sm-6 text-md-end"><a class="btn btn-primary" href="{% url 'update_exercise' exercise.slug %}"><i class="fas fa-pen"></i></a></div>
+                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-danger" href="{% url 'delete_exercise' exercise.slug %}"><i class="fas fa-trash"></i></a></div>
+                <br><br><br>
+            {% endif %}
+        </div>
+    </div>
+    
+{% endblock content %}

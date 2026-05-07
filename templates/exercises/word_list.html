@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    10 слов
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">10 случайных слов</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead">Попробуйте их перевести</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <div id="words_carousel" class="carousel carousel-dark bg-li slide">
+                    <div class="word_carousel carousel-inner">
+                        {% for word in object_list %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="card-container">
+                                <div class="card_word" id="card_{{ word.id }}">
+                                    <div class="front">{{ word.word_eng }}</div>
+                                    <div class="back">{{ word.word_rus }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#words_carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#words_carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        var words = document.getElementsByClassName("card_word");
+        var playing = false;
+        for (var i = 0; i < words.length; i++) {
+            words[i].addEventListener('click',function() {
+                if(playing)
+                    return;
+                playing = true;
+                anime({
+                    targets: this,
+                    scale: [{value: 1}, {value: 1.1}, {value: 1, delay: 250}],
+                    rotateY: {value: '+=180', delay: 200},
+                    easing: 'easeInOutSine',
+                    duration: 400,
+                    complete: function(anim){
+                        playing = false;
+                    }
+                });
+            });
+        }
+    </script>
+{% endblock content %}

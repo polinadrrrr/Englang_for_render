@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} EngLang {% endblock title %}
+
+{% block content %}
+    <section class="slider">
+        <div id="carousel" class="carousel carousel-light bg-li slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="{% static 'img/slide_1.png' %}" alt="...">
+                    <div class="carousel-caption display-4">
+                        <p>Выбери интересующую тему</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{% static 'img/slide_2.png' %}" alt="...">
+                    <div class="carousel-caption display-4">
+                        <p>Изучи теорию по урокам и учебникам</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/slide_3.png' %}" alt="...">
+                    <div class="carousel-caption display-4">
+                        <p>Выполни упражнения для самопроверки</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/slide_4.png' %}" alt="...">
+                    <div class="carousel-caption display-4">
+                        <p>Пройди тест и получи результаты</p>
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 align-content-center">
+                    <div class="banner_text text-center">
+                        <h2>EngLang</h2>
+                        <p>Начни уже сегодня</p>
+                        <a class="btn" href="{% url 'theme_list' %}">Начать</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="banner_img">
+                        <img class="img-fluid" src="{% static 'img/banner.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                <p class="lead">Хотите расширить свои горизонты и познакомиться с миром через новый язык? Изучение английского языка - это ключ к множеству возможностей и новых дверей, открывающихся перед вами. Овладейте английским, чтобы общаться с людьми со всего мира, путешествовать без языковых барьеров и сделать вашу карьеру международной. Не упускайте шанс стать гражданином мира, изучайте английский язык сегодня и откройте новый уровень возможностей!</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2 text-center">
+                <a class="btn" href="{% url 'theme_list' %}">Список тем</a>
+            </div>
+        </div>
+    </div>
+
+    <figure>
+        <div class="fixed-wrap">
+            <div id="fixed"></div>
+        </div>
+    </figure>
+
+    <div class="container-fluid padding">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">Плюсы изучения английского языка</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12 col-sm-6 col-md-3">
+                <i class="fa-solid fa-briefcase"></i>
+                <h3>Карьера</h3>
+                <p>Английский язык часто требуется в международных компаниях.</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Общение</h3>
+                <p>Английский язык является международным языком общения.</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h3>Образование</h3>
+                <p>Большинство научных исследований публикуются на английском языке.</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Развлечения</h3>
+                <p>Вам не придётся искать перевод, чтобы понять, о чём говорится в произведении.</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

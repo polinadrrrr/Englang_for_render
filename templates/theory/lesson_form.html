@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Урок
+{% endblock title %}
+
+{% block content %}
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            plugins: 'code advlist table link image code autoresize lists',
+            toolbar: 'code | undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+    });
+    </script>
+    
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form action="" method="POST" novalidate>
+                    <h2>Урок</h2>
+                    {% csrf_token %}
+                    <input type="text" name="name" value="{{ lesson.name }}" placeholder="Название">
+                    <select name="theme" class="form-select" required="">
+                        {% for value, name in form.theme.field.choices %}
+                            {% if value == lesson.theme.id %}
+                                <option selected value="{{ value }}">
+                                    {{ name }}
+                                </option>
+                            {% else %}
+                                <option value="{{ value }}">
+                                    {{ name }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input type="text" name="description" value="{{ lesson.description }}" placeholder="Описание">
+                    <textarea name="content" placeholder="Содержание">{{ lesson.content }}</textarea>
+                    <input type="text" placeholder="Теги" name="newtags"/>
+                    <label for="newtags"></label><br>
+                    <label class="form-check-label">
+                        <input type="checkbox" id="published" name="published" {% if lesson.published %} checked {% endif %}>{{ form.published.label }}
+                    </label><br>
+                    <button class="btn btn-success" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

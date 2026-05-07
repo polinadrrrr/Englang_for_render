@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ text.name }}
+{% endblock title %}
+
+{% block content %}
+    <script>
+        function speak(text) {
+            var msg = new SpeechSynthesisUtterance();
+            msg.lang = 'en-US';
+            msg.text = text;
+            window.speechSynthesis.speak(msg);
+        }
+    </script>
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ text.name }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="accordion accordion-flush" id="my_accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Переведите на русский
+                        </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#my_accordion">
+                            <div class="accordion-body">
+                                {% for sentence in sentences %}
+                                    <a class="sentence" onclick="speak(`{{ sentence }}`)">{{ sentence }}.</a>
+                                {% endfor %}
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Переведите на английский
+                        </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#my_accordion">
+                        <div class="accordion-body">{{ text.text_rus }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 text-center"></p>
+                {% if user in text.bookmarks.all %}
+                    <form class="sub_unsub" action="{% url 'bookmark_text' text.id %}" method="post" name="remove" id="remove">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" type="submit" name="remove" value="{{ text.id }}"><i class="fas fa-bookmark"></i></button>
+                    </form>
+                {% else %}
+                    <form class="sub_unsub" action="{% url 'bookmark_text' text.id %}" method="post" name="add" id="add">
+                        {% csrf_token %}
+                        <button class="btn btn-warning" type="submit" name="add" value="{{ text.id }}"><i class="fas fa-bookmark"></i></button>
+                    </form>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% if text.author == user.profile or user.is_superuser %}
+                <div class="col-12 text-center col-sm-6 text-md-end"><a class="btn btn-primary" href="{% url 'update_text' text.slug %}"><i class="fas fa-pen"></i></a></div>
+                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-danger" href="{% url 'delete_text' text.slug %}"><i class="fas fa-trash"></i></a></div>
+            {% endif %}
+            <br><br><br>
+            {% if topic %}
+                <div class="col-12 text-center">
+                    <h2>Слова для повторения</h2>
+                    <a class="btn" href="{% url 'topic_details' topic.slug %}">{{ topic.name }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>    
+{% endblock content %}
