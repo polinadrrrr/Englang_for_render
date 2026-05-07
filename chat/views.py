@@ -17,6 +17,15 @@ class ScenarioListView(ListView):
 
 
 @method_decorator(login_required, name="dispatch")
+class ConversationListView(ListView):
+    model = Conversation
+    template_name = 'chat/conversation_list.html'
+
+    def get_queryset(self):
+        return Conversation.objects.filter(user=self.request.user)
+
+
+@method_decorator(login_required, name="dispatch")
 class CreateScenarioView(CreateView):
     model = Scenario
     form_class = ScenarioForm

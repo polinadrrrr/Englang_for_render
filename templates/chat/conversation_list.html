@@ -2,35 +2,26 @@
 {% load static %}
 
 {% block title %}
-    Сценарии
+    Диалоги
 {% endblock title %}
 
 {% block content %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 offset-md-2 col-md-8 offset-xl-3 col-xl-6">
-                <h1 class="display-4">
-                    Сценарии
-                    {% if user.is_staff %}
-                        <a href="{% url 'create_scenario' %}"><i class="fas fa-plus"></i></a>
-                    {% endif %}
-                </h1>
+                <h1 class="display-4">Диалоги</h1>
                 <div class="list">
                     <ul class="unordered_list">
-                        {% for scenario in object_list %}
+                        {% for conversation in object_list %}
                             <li>
                                 <div class="main">
-                                    <a href="{% url 'conversation_list' user.username %}">{{ scenario.title }}</a>
+                                    <a href="{% url 'conversation' conversation.slug %}">{{ conversation.slug }}</a>
                                 </div>
                                 <div class="description">
-                                    <p>{{ scenario.description }}</p>
+                                    <p>{{ conversation.scenario.description }}</p>
                                 </div>
                                 <div class="actions">
-                                    <a href="{% url 'start_conversation' scenario.slug %}" class="btn btn-success">Новый диалог</a>
-                                    {% if user.is_staff %}
-                                        <a class="btn btn-primary" href="{% url 'update_scenario' scenario.slug %}"><i class="fas fa-pen"></i></a>
-                                        <a class="btn btn-danger" href="{% url 'delete_scenario' scenario.slug %}"><i class="fas fa-trash"></i></a>
-                                    {% endif %}
+                                    <a href="{% url 'start_conversation' conversation.scenario.slug %}" class="btn btn-success">Начать новый диалог</a>
                                 </div>
                             </li>    
                         {% endfor %}

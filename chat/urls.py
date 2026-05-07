@@ -1,7 +1,5 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
-from .models import Scenario, Conversation, Message
 
 urlpatterns = [
     path('scenarios/', views.ScenarioListView.as_view(), name='scenario_list'),
@@ -10,4 +8,5 @@ urlpatterns = [
     path('delete_scenario/<slug:slug>/', views.DeleteScenarioView.as_view(), name='delete_scenario'),
     path('start/<str:scenario_slug>/', views.start_conversation, name='start_conversation'),
     path('conversation/<str:conversation_slug>', views.conversation, name='conversation'),
+    path('conversations/<str:username>/', views.ConversationListView.as_view(), name='conversation_list'),
 ]
