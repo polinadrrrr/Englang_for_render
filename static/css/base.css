@@ -31,17 +31,17 @@
     --text-900: #300303;
     --text-950: #180101;
 
-    --background-50: #fbeaf0;
-    --background-100: #f7d4e0;
-    --background-200: #efa9c2;
-    --background-300: #e77ea3;
-    --background-400: #de5484;
-    --background-500: #d62965;
-    --background-600: #ab2151;
-    --background-700: #81183d;
-    --background-800: #561029;
-    --background-900: #2b0814;
-    --background-950: #15040a;
+    --background-50: #ffe5ef;
+    --background-100: #ffccdf;
+    --background-200: #ff99be;
+    --background-300: #ff669e;
+    --background-400: #ff337e;
+    --background-500: #ff005d;
+    --background-600: #cc004b;
+    --background-700: #990038;
+    --background-800: #660025;
+    --background-900: #330013;
+    --background-950: #1a0009;
 
     --primary-50: #edf8ed;
     --primary-100: #dcf0db;
@@ -131,28 +131,26 @@ body, html {
 
 .navbar-toggler {
     border: none !important;
-    border-radius: 0px !important;
+    border-radius: 10px !important;
     outline: none !important;
-    color: #fff;
-    background-color: #ccc;
+    color: var(--text-900);
 }
 
 /*  Footer  */
 footer {
-    background-color: #333333;
+    background-color: var(--background-100);
     padding-top: 30px;
     border-top: 2px solid;
-    border-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff) 30;
+    border-image: var(--linearPrimaryAccent) 30;
 }
 
 footer h3 {
-    color: #fff;
+    color: var(--text-900);
     font-size: 2em;
 }
 
-footer h3:hover {
-    background-image: -webkit-linear-gradient(90deg, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);/* Chrome 10-25, Safari 5.1-6 */                          
-    background-image: linear-gradient(90deg, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   ;
+footer h3:hover {                          
+    background-image: var(--linearPrimaryAccent);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   ;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
