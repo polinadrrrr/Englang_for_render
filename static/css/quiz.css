@@ -4,35 +4,35 @@
     margin-top: 15px;
     border-radius: 5px;
     font-weight: 300;
-    color: #222;
+    color: var(--text-700);
 }
-.error-message { background-color: #ffffb6; }
-.correct { background-color: #b6ffb6; }
-.did_not_answer { background-color: #b6b6ff; }
-.incorrect { background-color: #ffb6ff; }
+.error-message { background-color: var(--secondary-100); }
+.correct { background-color: var(--primary-200); }
+.did_not_answer { background-color: var(--primary-100); }
+.incorrect { background-color: var(--secondary-200); }
 
 .question a {
     margin-left: 15px;
     font-weight: 300;
     font-size: 1.2em;
-    color: #222;
+    color: var(--text-700);
     transition: all 0.5s ease;
 }
 
 .question a:hover {
-    color: #666;
+    color: var(--text-500);
     transition: all 0.5s ease;
 }
 
 .answers a {
     margin-left: 15px;
     font-weight: 300;
-    color: #222;
+    color: var(--text-700);
     transition: all 0.5s ease;
 }
 
 .answers a:hover {
-    color: #666;
+    color: var(--text-500);
     transition: all 0.5s ease;
 }
 
