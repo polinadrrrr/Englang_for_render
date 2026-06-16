@@ -34,7 +34,7 @@ a {
 }
 
 /*  buttons   */
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-accent {
   appearance: none;
   backface-visibility: hidden;
   border-radius: 10px;
@@ -71,8 +71,12 @@ a {
     background-color: var(--secondary);
     color: var(--text);
 }
+.btn-accent {
+    background-color: var(--accent);
+    color: #fff;
+}
 
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover, .btn-secondary:hover, .btn-accent:hover {
   box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
   opacity: 1;
   transform: translateY(0);
@@ -85,25 +89,29 @@ a {
 .btn-secondary:hover {
     background-color: var(--secondary-500);
 }
+.btn-accent:hover {
+    background-color: var(--accent-500);
+    color: #fff;
+}
 
-.btn-primary:hover:after, .btn-secondary:hover:after {
+.btn-primary:hover:after, .btn-secondary:hover:after, .btn-accent:hover:after {
   opacity: .5;
 }
 
-.btn-primary:active, .btn-secondary:active {
+.btn-primary:active, .btn-secondary:active, .btn-accent:active {
   box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
   transform: translateY(2px);
   transition-duration: .35s;
 }
 
-.btn-primary:active:after, .btn-secondary:active:after {
+.btn-primary:active:after, .btn-secondary:active:after, .btn-accent:active:after {
     opacity: 1;
 }
 
 @media (min-width: 768px) {
-    .btn-primary, .btn-secondary {
+    .btn-primary, .btn-secondary, .btn-accent {
         padding: 14px 22px;
-        width: 176px;
+        width: 150px;
     }
 }
 

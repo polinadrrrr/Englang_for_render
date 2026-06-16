@@ -33,7 +33,7 @@ form.sub_unsub {
 }
 
 form textarea {
-    color: var(--text-500);
+    color: var(--text);
     background: var(--accent-50);
     font-size: 14px;
     font-weight: 500;
@@ -41,12 +41,13 @@ form textarea {
     height: 100px;
     width: 70%;
     padding: 6px 12px;
+    border-radius: 10px;
     border: 0px;
     margin: 15px auto;
 }
 
 form select {
-    color: var(--text-500);
+    color: var(--text);
     background: var(--accent-50);
     font-size: 14px;
     font-weight: 500;

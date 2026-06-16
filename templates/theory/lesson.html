@@ -41,14 +41,14 @@
                 {% else %}
                     <form class="sub_unsub" action="{% url 'bookmark_lesson' lesson.id %}" method="post" name="add" id="add">
                         {% csrf_token %}
-                        <button class="btn btn-warning" type="submit" name="add" value="{{ lesson.id }}"><i class="fas fa-bookmark"></i></button>
+                        <button class="btn btn-accent" type="submit" name="add" value="{{ lesson.id }}"><i class="fas fa-bookmark"></i></button>
                     </form>
                 {% endif %}
             </div>
             {% endif %}
             {% if lesson.author == user.profile or user.is_superuser %}
                 <div class="col-12 text-center col-sm-6 text-md-end"><a class="btn btn-primary" href="{% url 'update_lesson' lesson.slug %}"><i class="fas fa-pen"></i></a></div>
-                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-danger" href="{% url 'delete_lesson' lesson.slug %}"><i class="fas fa-trash"></i></a></div>
+                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-secondary" href="{% url 'delete_lesson' lesson.slug %}"><i class="fas fa-trash"></i></a></div>
                 <br><br><br>
             {% endif %}
         </div>
@@ -71,7 +71,7 @@
                     <h3>Что-то не поняли? Задайте вопрос в комментариях!</h3>
                     <input type="hidden" name="parent" id="contact_parent" value="">
                     <textarea name="content" {% if not user.is_authenticated %} disabled {% endif %} id="contact_content" class="form-control" required=""></textarea>
-                    <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane"></i></button>
                 </form>                
             </div>
         </div>
@@ -108,7 +108,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center padding">
-                <a class="btn btn-warning" href="{% url 'theme_list' %}">Вернуться к темам</a>
+                <a class="btn btn-accent" href="{% url 'theme_list' %}">Назад</a>
             </div>
         </div>
     </div>

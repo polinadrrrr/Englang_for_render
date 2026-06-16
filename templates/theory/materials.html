@@ -30,7 +30,7 @@
                                     {% if lesson.author == user.profile or user.is_superuser %}
                                     <div class="actions">
                                         <a class="btn btn-primary" href="{% url 'update_lesson' lesson.slug %}"><i class="fas fa-pen"></i></a>
-                                        <a class="btn btn-danger" href="{% url 'delete_lesson' lesson.slug %}"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-secondary" href="{% url 'delete_lesson' lesson.slug %}"><i class="fas fa-trash"></i></a>
                                     </div>
                                     {% endif %}
                                 </li>    
@@ -65,7 +65,7 @@
                                     {% if user.is_staff %}
                                         <div class="actions">
                                             <a class="btn btn-primary" href="{% url 'update_textbook' textbook.slug %}"><i class="fas fa-pen"></i></a>
-                                            <a class="btn btn-danger" href="{% url 'delete_textbook' textbook.slug %}"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-secondary" href="{% url 'delete_textbook' textbook.slug %}"><i class="fas fa-trash"></i></a>
                                         </div>
                                     {% endif %}
                                 </li>
@@ -99,7 +99,7 @@
                                     {% if text.author == user.profile or user.is_superuser %}
                                         <div class="actions">
                                             <a class="btn btn-primary" href="{% url 'update_text' text.slug %}"><i class="fas fa-pen"></i></a>
-                                            <a class="btn btn-danger" href="{% url 'delete_text' text.slug %}"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-secondary" href="{% url 'delete_text' text.slug %}"><i class="fas fa-trash"></i></a>
                                         </div>
                                     {% endif %}
                                 </li>
@@ -133,7 +133,7 @@
                                     {% if user.is_authenticated and topic.author == user.profile or user.is_superuser %}
                                         <div class="actions">
                                             <a class="btn btn-primary" href="{% url 'update_topic' topic.slug %}"><i class="fas fa-pen"></i></a>
-                                            <a class="btn btn-danger" href="{% url 'delete_topic' topic.slug %}"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-secondary" href="{% url 'delete_topic' topic.slug %}"><i class="fas fa-trash"></i></a>
                                         </div>
                                     {% endif %}
                                 </li>
@@ -142,13 +142,13 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-end">
-                    <a href="{% url 'game' %}" class="btn btn-success">Найти пару</a>
+                    <a href="{% url 'game' %}" class="btn btn-accent">Найти пару</a>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-center">
                     <a href="{% url 'ten_random_words' %}" class="btn btn-primary">10 Карточек</a>
                 </div>
                 <div class="col-12 col-md-4 text-center text-md-start">
-                    <a class="btn btn-danger" href="{% url 'one_word' %}">Проверить себя</a>
+                    <a class="btn btn-secondary" href="{% url 'one_word' %}">Проверить себя</a>
                 </div>
             </div>
         </div>
@@ -176,7 +176,7 @@
                                     {% if user.is_authenticated and exercise.author == user.profile or user.is_superuser %}
                                         <div class="actions">
                                             <a class="btn btn-primary" href="{% url 'update_exercise' exercise.slug %}"><i class="fas fa-pen"></i></a>
-                                            <a class="btn btn-danger" href="{% url 'delete_exercise' exercise.slug %}"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-secondary" href="{% url 'delete_exercise' exercise.slug %}"><i class="fas fa-trash"></i></a>
                                         </div>
                                     {% endif %}
                                 </li>
@@ -193,7 +193,7 @@
                 <form method="get" action="{% url 'materials' %}">
                     <h2>Искать материалы</h2>
                     <input type="text" name="q" placeholder="Найти"><br>
-                    <button type="submit" class="btn btn-warning">Искать</button>
+                    <button type="submit" class="btn btn-accent">Искать</button>
                 </form>
             </div>
         </div>
