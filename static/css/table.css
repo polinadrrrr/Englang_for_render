@@ -4,7 +4,8 @@ table {
 	text-align: center;
 	border-collapse: collapse;
 	border-spacing: 5px;
-	background: #ccc;
+	border-radius: 10px;
+	background: var(--primary-100);
 	margin: 15px auto;
 }
 th {
@@ -15,20 +16,20 @@ th {
 }
 tbody tr:nth-child(2) {
 	border-bottom: 3px solid;
-	background-image: linear-gradient(to right, #ffffb6,#b6ffb6,#b6b6ff,#ffb6ff);
+	background: var(--secondary-100);
 	border-image-slice: 1;
 }
 td {
 	padding: 10px;
-	color: #555;
+	color: var(--text);
 }
 table a {
-    color: #555;
+    color: var(--text);
     text-decoration: none;
     transition: 0.3s linear;
 }
 table a:hover {
-    color: #aaa;
+    color: var(--text-500);
     text-decoration: none;
     transition: 0.3s linear;
 }

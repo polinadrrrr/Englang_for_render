@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Сценарий
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form action="" method="POST" novalidate>
+                    <h2>Сценарий</h2>
+                    {% csrf_token %}
+                    <input type="text" name="title" value="{{ scenario.title }}" placeholder="Название">
+                    <input type="text" name="icon" value="{{ scenario.icon }}" placeholder="Иконка">
+                    <input type="text" name="description" value="{{ scenario.description }}" placeholder="Описание">
+                    <textarea name="system_prompt" placeholder="Содержание">{{ scenario.system_prompt }}</textarea>
+                    <label class="form-check-label">
+                        <input type="checkbox" id="is_active" name="is_active" {% if scenario.is_active %} checked {% endif %}>{{ form.is_active.label }}
+                    </label><br>
+                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -51,7 +51,7 @@
                                 {% if user.is_authenticated and item.author == user.profile or user.is_superuser %}
                                     <div class="actions">
                                         <a class="btn btn-primary" href="{% url 'update_lesson' item.slug %}"><i class="fas fa-pen"></i></a>
-                                        <a class="btn btn-danger" href="{% url 'delete_lesson' item.slug %}"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-primary" href="{% url 'delete_lesson' item.slug %}"><i class="fas fa-trash"></i></a>
                                     </div>
                                 {% endif %}
                             </li>
@@ -67,7 +67,7 @@
                 <form method="get" action="{% url 'materials' %}">
                     <h2>Искать материалы</h2>
                     <input type="text" name="q" placeholder="Найти"><br>
-                    <button type="submit" class="btn btn-warning">Искать</button>
+                    <button type="submit" class="btn btn-accent">Искать</button>
                 </form>
             </div>
         </div>

@@ -37,7 +37,7 @@
                                 {% if user.is_staff %}
                                     <div class="actions">
                                         <a class="btn btn-primary" href="{% url 'update_textbook' item.slug %}"><i class="fas fa-pen"></i></a>
-                                        <a class="btn btn-danger" href="{% url 'delete_textbook' item.slug %}"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-secondary" href="{% url 'delete_textbook' item.slug %}"><i class="fas fa-trash"></i></a>
                                     </div>
                                 {% endif %}
                             </li>
@@ -53,7 +53,7 @@
                 <form method="get" action="{% url 'materials' %}">
                     <h2>Искать материалы</h2>
                     <input type="text" name="q" placeholder="Найти"><br>
-                    <button type="submit" class="btn btn-warning">Искать</button>
+                    <button type="submit" class="btn btn-accent">Искать</button>
                 </form>
             </div>
         </div>

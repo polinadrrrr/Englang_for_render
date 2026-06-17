@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ conversation.scenario }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row text-center alert">
+            <div class="col-12">
+                <h1 class="display-4">{{ conversation.scenario }}</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead"><a href="{% url 'user_profile_detail' conversation.user.username %}">{{ conversation.user.username}}</a>, {{ conversation.scenario.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row padding">
+                <h2>Диалог</h2>
+                {% for message in messages %}
+                    {% if message.role == 'user' %}
+                    <div class="offset-sm-1 col-sm-10">
+                        <div class="comment">
+                            <img src="{{ message.conversation.user.profile.image.url }}" alt="{{ message.conversation.user.username }}">
+                            <p class="author"><a href="{% url 'user_profile_detail' message.conversation.user.username %}">{{ message.conversation.user }}</a></p>
+                            <p>{{ message.content }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% empty %}
+                    <p class="text-center">Пока что нет комментариев</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center padding">
+                <a class="btn btn-warning" href="{% url 'scenario_list' %}">Вернуться к сценариям</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

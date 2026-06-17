@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Сценарии
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 offset-md-2 col-md-8 offset-xl-3 col-xl-6">
+                <h1 class="display-4">
+                    Сценарии
+                    {% if user.is_staff %}
+                        <a href="{% url 'create_scenario' %}"><i class="fas fa-plus"></i></a>
+                    {% endif %}
+                </h1>
+                <div class="list">
+                    <ul class="unordered_list">
+                        {% for scenario in object_list %}
+                            <li>
+                                <div class="main">
+                                    <a href="{% url 'conversation_list' user.username %}">{{ scenario.title }}</a>
+                                </div>
+                                <div class="description">
+                                    <p>{{ scenario.description }}</p>
+                                </div>
+                                <div class="actions">
+                                    <a href="{% url 'start_conversation' scenario.slug %}" class="btn btn-accent"><i class="fa-solid fa-envelope"></i></a>
+                                    {% if user.is_staff %}
+                                        <a class="btn btn-primary" href="{% url 'update_scenario' scenario.slug %}"><i class="fas fa-pen"></i></a>
+                                        <a class="btn btn-secondary" href="{% url 'delete_scenario' scenario.slug %}"><i class="fas fa-trash"></i></a>
+                                    {% endif %}
+                                </div>
+                            </li>    
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+                <form method="get" action="{% url 'materials' %}">
+                    <h2>Искать материалы</h2>
+                    <input type="text" name="q" placeholder="Найти"><br>
+                    <button type="submit" class="btn btn-accent">Искать</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

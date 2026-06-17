@@ -16,7 +16,7 @@
                 <p>{{ textbook.description }}</p>
                 <p>Автор: {{ textbook.author }}</p>
                 <p>Тема: {{ textbook.theme }}</p>
-                <a class="btn btn-warning" href="{{ textbook.file.url }}">Читать</a>
+                <a class="btn btn-accent" href="{{ textbook.file.url }}">Читать</a>
             </div>
             
         </div>
@@ -36,19 +36,19 @@
                 {% if user in textbook.bookmarks.all %}
                     <form class="sub_unsub" action="{% url 'bookmark_textbook' textbook.id %}" method="post" name="remove" id="remove">
                         {% csrf_token %}
-                        <button class="btn" type="submit" name="remove" value="{{ textbook.id }}">Убрать из избранного</button>
+                        <button class="btn btn-secondary" type="submit" name="remove" value="{{ textbook.id }}">Убрать</button>
                     </form>
                 {% else %}
                     <form class="sub_unsub" action="{% url 'bookmark_textbook' textbook.id %}" method="post" name="add" id="add">
                         {% csrf_token %}
-                        <button class="btn" type="submit" name="add" value="{{ textbook.id }}">Добавить в избранное</button>
+                        <button class="btn btn-primary" type="submit" name="add" value="{{ textbook.id }}">Добавить</button>
                     </form>
                 {% endif %}
             </div>
             {% endif %}
             {% if user.is_staff %}
                 <div class="col-12 text-center col-sm-6 text-md-end"><a class="btn btn-primary" href="{% url 'update_textbook' textbook.slug %}">Редактировать</a></div>
-                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-danger" href="{% url 'delete_textbook' textbook.slug %}">Удалить</a></div>
+                <div class="col-12 text-center col-sm-6 text-md-start"><a class="btn btn-secondary" href="{% url 'delete_textbook' textbook.slug %}">Удалить</a></div>
                 <br><br><br>
             {% endif %}
         </div>
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center padding">
-                <a class="btn btn-warning" href="{% url 'theme_list' %}">Вернуться к темам</a>
+                <a class="btn btn-accent" href="{% url 'theme_list' %}">Назад</a>
             </div>
         </div>
     </div>
